@@ -1,7 +1,7 @@
 <template>
   <v-app-bar v-if="page > 0" flat absolute color="transparent">
     <v-btn
-        @click="page = 0"
+        @click="changePage(0)"
         text
     >
       <v-icon size="40" color="indigo">mdi-home</v-icon>

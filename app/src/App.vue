@@ -1,9 +1,9 @@
 <template>
   <v-app>
-
     <Appbar :page="showView" :change-page="changeView"/>
     <v-main>
-      <v-container fill-height>
+      <vue-particles class="background" color="#3f51b5"></vue-particles>
+      <v-container fill-height class="foreground">
         <v-row class="justify-center align-center">
           <v-col cols="12" sm="12" xl="12">
 
@@ -42,6 +42,7 @@ import ChartOne from "./components/ChartOne";
 import Overview from "./components/Overview";
 import Appbar from "./components/Appbar";
 import Footer from "./components/Footer";
+
 export default {
   name: 'App',
 
@@ -67,3 +68,15 @@ export default {
   }),
 };
 </script>
+
+<style scoped>
+.background {
+  position : absolute;
+  width:100%;
+  height:100%;
+}
+
+.foreground {
+  z-index:2;
+}
+</style>
