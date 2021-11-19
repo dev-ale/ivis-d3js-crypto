@@ -36,7 +36,7 @@
 </template>
 
 <script>
-import ChartOne from "./ChartOne";
+import ChartOne from "./Card";
 export default {
 name: "Overview",
   props: ['changePage'],

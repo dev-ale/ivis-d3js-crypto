@@ -5,6 +5,7 @@
       <v-row justify="center" align-content="center" class="mt-5">
         <v-col>
           <p align="center"><strong>BTC</strong></p>
+          <PieChart :btc=42.3 :eth=19.6 />
         </v-col>
       </v-row>
     </v-card>
@@ -21,8 +22,10 @@
 </template>
 
 <script>
+import PieChart from "./Charts/PieChart";
 export default {
   name: "ChartOne",
+  components: {PieChart},
   props: ['title','page','changePage'],
   data: () => ({
     actualPage: 1

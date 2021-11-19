@@ -38,7 +38,7 @@
 
 <script>
 import Welcome from "./components/Welcome";
-import ChartOne from "./components/ChartOne";
+import ChartOne from "./components/Card";
 import Overview from "./components/Overview";
 import Appbar from "./components/Appbar";
 import Footer from "./components/Footer";
