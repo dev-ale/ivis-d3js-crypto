@@ -1,33 +1,13 @@
 <template>
   <v-app>
 
-
-    <v-app-bar v-if="showView > 0" flat absolute color="transparent">
-      <v-btn
-          @click="showView = 0"
-          text
-      >
-        <v-icon size="40" color="indigo">mdi-home</v-icon>
-        <span class="ml-2 indigo--text">Home</span>
-      </v-btn>
-      <v-spacer/>
-      <v-btn
-          v-if="showView < 10"
-          @click="showView = 10"
-          icon
-      >
-        <v-icon size="40" color="indigo">mdi-view-dashboard</v-icon>
-
-      </v-btn>
-    </v-app-bar>
-
-
+    <Appbar :page="showView" :change-page="changeView"/>
     <v-main>
       <v-container fill-height>
         <v-row class="justify-center align-center">
           <v-col cols="12" sm="12" xl="12">
 
-            <Welcome v-if="showView === 0" text="crypto stats" :start-function="startFunction"/>
+            <Welcome v-if="showView === 0" text="crypto stats" :change-page="changeView"/>
 
             <ChartOne v-if="showView === 1" title="1 - Overview" :page="showView" :change-page="changeView"/>
 
@@ -52,47 +32,22 @@
         </v-row>
       </v-container>
     </v-main>
-    <v-footer
-        v-if="showView === 0"
-        color="transparent"
-        padless
-    >
-      <v-row
-          justify="center"
-          no-gutters
-      >
-        <v-btn
-            href="https://github.com/dev-ale/ivis-d3js-crypto"
-            target="_blank"
-            color="indigo"
-            text
-            rounded
-            class="my-2"
-        >
-          <v-icon size="40">mdi-github</v-icon>
-
-        </v-btn>
-        <v-col
-            class="indigo--text py-4 text-center white--text"
-            cols="12"
-        >
-          {{ new Date().getFullYear() }} — <strong>Alejandro Garcia</strong>
-        </v-col>
-      </v-row>
-    </v-footer>
+    <Footer :page="showView"/>
   </v-app>
 </template>
 
 <script>
-
-
 import Welcome from "./components/Welcome";
 import ChartOne from "./components/ChartOne";
 import Overview from "./components/Overview";
+import Appbar from "./components/Appbar";
+import Footer from "./components/Footer";
 export default {
   name: 'App',
 
   components: {
+    Footer,
+    Appbar,
     Overview,
     ChartOne,
     Welcome
