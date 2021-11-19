@@ -5,14 +5,17 @@
       <v-row justify="center" align-content="center" class="mt-5">
         <v-col>
           <p align="center"><strong>BTC</strong></p>
-
         </v-col>
       </v-row>
-
-
-
-
     </v-card>
+    <v-pagination
+        class="mt-5"
+        color="indigo"
+        v-model="actualPage"
+        :length="8"
+        circle
+        @input="change"
+    ></v-pagination>
   </v-col>
 
 </template>
@@ -20,7 +23,15 @@
 <script>
 export default {
   name: "ChartOne",
-  props: ['title',],
+  props: ['title','page','changePage'],
+  data: () => ({
+    actualPage: 1
+  }),
+  methods: {
+    change() {
+      this.changePage(this.actualPage);
+    }
+  }
 }
 </script>
 
