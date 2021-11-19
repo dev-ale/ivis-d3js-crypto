@@ -5,11 +5,19 @@
     <v-app-bar v-if="showView > 0" flat absolute color="transparent">
       <v-btn
           @click="showView = 0"
-          target="_blank"
           text
       >
         <v-icon size="40" color="indigo">mdi-home</v-icon>
         <span class="ml-2 indigo--text">Home</span>
+      </v-btn>
+      <v-spacer/>
+      <v-btn
+          v-if="showView < 10"
+          @click="showView = 10"
+          icon
+      >
+        <v-icon size="40" color="indigo">mdi-view-dashboard</v-icon>
+
       </v-btn>
     </v-app-bar>
 
@@ -36,10 +44,42 @@
             <ChartOne v-if="showView === 7" title="7 - BTC - ETH" :page="showView" :change-page="changeView"/>
 
             <ChartOne v-if="showView === 8" title="8 - Countries" :page="showView" :change-page="changeView"/>
+
+            <ChartOne v-if="showView === 9" title="9 - ???" :page="showView" :change-page="changeView"/>
+
+            <Overview v-if="showView === 10" :change-page="changeView"/>
           </v-col>
         </v-row>
       </v-container>
     </v-main>
+    <v-footer
+        v-if="showView === 0"
+        color="transparent"
+        padless
+    >
+      <v-row
+          justify="center"
+          no-gutters
+      >
+        <v-btn
+            href="https://github.com/dev-ale/ivis-d3js-crypto"
+            target="_blank"
+            color="indigo"
+            text
+            rounded
+            class="my-2"
+        >
+          <v-icon size="40">mdi-github</v-icon>
+
+        </v-btn>
+        <v-col
+            class="indigo--text py-4 text-center white--text"
+            cols="12"
+        >
+          {{ new Date().getFullYear() }} — <strong>Alejandro Garcia</strong>
+        </v-col>
+      </v-row>
+    </v-footer>
   </v-app>
 </template>
 
@@ -48,10 +88,12 @@
 
 import Welcome from "./components/Welcome";
 import ChartOne from "./components/ChartOne";
+import Overview from "./components/Overview";
 export default {
   name: 'App',
 
   components: {
+    Overview,
     ChartOne,
     Welcome
 

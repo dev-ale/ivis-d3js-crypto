@@ -12,7 +12,7 @@
         class="mt-5"
         color="indigo"
         v-model="actualPage"
-        :length="8"
+        :length="9"
         circle
         @input="change"
     ></v-pagination>
@@ -27,6 +27,9 @@ export default {
   data: () => ({
     actualPage: 1
   }),
+  mounted() {
+    this.actualPage = this.page;
+  },
   methods: {
     change() {
       this.changePage(this.actualPage);
